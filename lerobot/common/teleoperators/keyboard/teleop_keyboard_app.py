@@ -1,6 +1,8 @@
 import logging
 import time
+
 from lerobot.common.teleoperators.keyboard import KeyboardTeleop, KeyboardTeleopConfig
+
 
 def main():
     logging.info("Configuring Keyboard Teleop")
@@ -14,7 +16,7 @@ def main():
     i = 0
     while i < 20:
         action = keyboard.get_action()
-        print("Captured keys: %s",action)
+        print("Captured keys: %s", action)
         time.sleep(1)
         i += 1
 
