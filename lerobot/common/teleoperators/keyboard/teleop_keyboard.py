@@ -120,7 +120,7 @@ class KeyboardTeleop(Teleoperator):
         action = {key for key, val in list(self.pressed_keys.items()) if val}
         self.logs["read_pos_dt_s"] = time.perf_counter() - before_read_t
 
-        return action
+        return np.array(list(action))
 
     def send_feedback(self, feedback: np.ndarray) -> None:
         pass
