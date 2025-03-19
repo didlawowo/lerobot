@@ -1,16 +1,10 @@
 import abc
-import enum
 from pathlib import Path
 from typing import Any
 
 from lerobot.common.constants import HF_LEROBOT_CALIBRATION, ROBOTS
 
 from .config import RobotConfig
-
-
-class RobotMode(enum.Enum):
-    TELEOP = 0
-    AUTO = 1
 
 
 # TODO(aliberts): action/obs typing such as Generic[ObsType, ActType] similar to gym.Env ?
@@ -24,8 +18,8 @@ class Robot(abc.ABC):
 
     def __init__(self, config: RobotConfig):
         self.robot_type = self.name
-        self.robot_mode: RobotMode | None = None
         self.id = config.id
+        self.robot_mode = config.robot_mode
         self.calibration_dir = (
             Path(config.calibration_dir)
             if config.calibration_dir
